@@ -13,6 +13,9 @@ class Libro(models.Model):
 class Usuario(models.Model):
     user = models.CharField(max_length=30)
 
+    def __str__(self):
+        return self.user
+
 class Reseña(models.Model):
     libro = models.ForeignKey(Libro, on_delete=models.CASCADE)
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
@@ -20,4 +23,4 @@ class Reseña(models.Model):
     comentario = models.TextField()
 
     def __str__(self):
-        return f'Reseña de {self.usuario} para {self.libro}'
+        return f'Reseña de {self.calificacion} de {self.usuario} para el libro {self.libro}'
